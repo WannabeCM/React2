@@ -1,5 +1,9 @@
-import "./menu.css";
+import './menu.css'
 
-export default function Menu() {
-  return <div>menu</div>;
+export default function Menu(){
+    return (
+        <div>
+            menu
+        </div>
+    )
 }

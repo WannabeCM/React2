@@ -1,15 +1,22 @@
 import "./App.css";
-import Hompage from "./pages/hompage/hompage";
+import Homepage from "./pages/homepage/Homepage";
 import Login from "./pages/login/Login";
 
 function App() {
-  const login = false;
   const user = {
     login: true,
-    name: "박성범",
+    id: "hojun@weniv.com",
+    nickname: "juni",
   };
-  // const login = true;
-  return <div>{user.login ? <Hompage userName={user.name} /> : <Login />}</div>;
+  return (
+    <div>
+      {user.login ? (
+        <Homepage id={user.id} nickname={user.nickname} />
+      ) : (
+        <Login />
+      )}
+    </div>
+  );
 }
 
 export default App;

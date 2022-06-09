@@ -1,5 +1,9 @@
-import "./main.css";
+import './main.css'
 
-export default function Main() {
-  return <div>main</div>;
+export default function Main(){
+    return (
+        <div>
+            section
+        </div>
+    )
 }

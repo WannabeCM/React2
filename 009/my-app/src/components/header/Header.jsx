@@ -1,10 +1,11 @@
 import "./header.css";
-import Menu from "../menu/Menu";
+import Menu from "../menu/Menu.jsx";
 
-export default function Header() {
+export default function Header({ id, nickname }) {
+  // console.log(userName)
   return (
-    <div>
-      header@@
+    <div className="test">
+      header, {nickname}_{id}님 반갑습니다.
       <Menu />
     </div>
   );
