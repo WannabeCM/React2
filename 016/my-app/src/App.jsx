@@ -1,23 +1,58 @@
-function App() {
-  // const test = <h1>hello test</h1>;
-  // console.log(test);
-  function Test(props) {
-    console.log(props);
-    return <h1>hello test</h1>;
-  }
+import React, { useState } from "react";
+
+const Parent = () => {
+  const [v, setV] = useState({
+    a: 101,
+    b: "hello",
+    c: "world",
+  });
+
   return (
-    <div className="App">
-      {[
-        <h1 key="1">hello 1</h1>,
-        <h1 key="2">hello 2</h1>,
-        <h1 key="3">hello 3</h1>,
-        <h1 key="4">hello 4</h1>,
-        <h1 key="5">hello 5</h1>,
-        <Test a="10" b="20" c="30" />,
-        <Test>
-          <h1>hello 5</h1>
-        </Test>,
-      ]}
+    <div>
+      <Child
+        one={v.a}
+        two={v.b}
+        three={v.c}
+        onChange={(value) => {
+          console.log(v);
+          return setV({ ...v, ...value });
+        }}
+      />
+      {v.id}
+    </div>
+  );
+};
+
+const Child = (props) => {
+  const [input, setInput] = useState();
+
+  const onChange = (event) => {
+    console.log(event);
+
+    const { name, value } = event.target;
+    console.log(name, value);
+    // console.log(name)
+    // console.log(value)
+    // console.log(typeof name)
+    // console.log(typeof value)
+
+    setInput({ [name]: value }); // [name]은 구조분해할당 아닙니다. 대괄호가 없으면 'name'으로 들어가기 때문에 변수명으로 넣기 위한 코드입니다.
+    props.onChange(input);
+  };
+  return (
+    <div>
+      <p>{props.one}</p>
+      <p>{props.two}</p>
+      <p>{props.three}</p>
+      <input type="text" name="id" onChange={onChange} />
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <div>
+      <Parent />
     </div>
   );
 }
